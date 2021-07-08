@@ -4,10 +4,7 @@ import org.apache.spark.SparkContext;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.types.CharType;
-import org.apache.spark.sql.types.Metadata;
-import org.apache.spark.sql.types.StructField;
-import org.apache.spark.sql.types.StructType;
+import org.apache.spark.sql.types.*;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.mortbay.log.Log;
 import org.slf4j.Logger;
@@ -29,14 +26,14 @@ public class TradeDataLoader {
                 new StructField("PreviouslyReported", StringType, false, Metadata.empty()),
                 new StructField("SecurityID", StringType, false, Metadata.empty()),
                 new StructField("SecurityIdSource", IntegerType, false, Metadata.empty()),
-                new StructField("LastQty", IntegerType, false, Metadata.empty()),
+                new StructField("LastQty", LongType, false, Metadata.empty()),
                 new StructField("LastPx", DoubleType, false, Metadata.empty()),
                 new StructField("TradeDate", DateType, false, Metadata.empty()),
-                new StructField("TransactTime", DateType, false, Metadata.empty()),
-                new StructField("NoSides", ShortType, false, Metadata.empty()),
-                new StructField("Side", ShortType, false, Metadata.empty()),
+                new StructField("TransactTime", StringType, false, Metadata.empty()),
+                new StructField("NoSides", IntegerType, false, Metadata.empty()),
+                new StructField("Side", IntegerType, false, Metadata.empty()),
                 new StructField("OrderID", LongType, false, Metadata.empty()),
-                new StructField("Currency", StringType, false, Metadata.empty()),
+                new StructField("Currency", StringType, false, Metadata.empty())
         });
 
         // load the trades dataset

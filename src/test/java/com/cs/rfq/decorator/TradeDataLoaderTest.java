@@ -22,11 +22,11 @@ public class TradeDataLoaderTest extends AbstractSparkUnitTest {
 
         Long traderId = trades.first().getLong(0);
         Long entityId = trades.first().getLong(1);
-        String securityId = trades.first().getString(2);
-        Long lastQty = trades.first().getLong(3);
-        Double lastPx = trades.first().getDouble(4);
-        Date tradeDate = trades.first().getDate(5);
-        String currency = trades.first().getString(6);
+        String securityId = trades.first().getString(5);
+        Long lastQty = trades.first().getLong(7);
+        Double lastPx = trades.first().getDouble(8);
+        Date tradeDate = trades.first().getDate(9);
+        String currency = trades.first().getString(14);
 
         assertEquals((Long) 7704615737577737110L, traderId);
         assertEquals((Long) 5561279226039690843L, entityId);
