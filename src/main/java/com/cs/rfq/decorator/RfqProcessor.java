@@ -6,6 +6,7 @@ import com.cs.rfq.decorator.extractors.TotalTradesWithEntityExtractor;
 import com.cs.rfq.decorator.extractors.VolumeTradedWithEntityYTDExtractor;
 import com.cs.rfq.decorator.publishers.MetadataJsonLogPublisher;
 import com.cs.rfq.decorator.publishers.MetadataPublisher;
+import org.apache.avro.reflect.MapEntry;
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -14,6 +15,7 @@ import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.joda.time.DateTime;
+import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,9 +41,11 @@ public class RfqProcessor {
         this.session = session;
         this.streamingContext = streamingContext;
 
-        //TODO: use the TradeDataLoader to load the trade data archives
+        // use the TradeDataLoader to load the trade data archives
+        TradeDataLoader tradeDataLoader = new TradeDataLoader();
+        trades = tradeDataLoader.loadTrades(session, "C:\\exercises\\cs-2021-cz-3\\src\\test\\resources\\trades\\trades.json");
 
-        //TODO: take a close look at how these two extractors are implemented
+        // take a close look at how these two extractors are implemented
         extractors.add(new TotalTradesWithEntityExtractor());
         extractors.add(new VolumeTradedWithEntityYTDExtractor());
     }
@@ -67,10 +71,15 @@ public class RfqProcessor {
         log.info(String.format("Received Rfq: %s", rfq.toString()));
 
         //create a blank map for the metadata to be collected
-        //Map<RfqMetadataFieldNames, Object> metadata = new HashMap<>();
+        Map<RfqMetadataFieldNames, Object> metadata = new HashMap<>();
 
-        //TODO: get metadata from each of the extractors
+        // get metadata from each of the extractors
+        for (RfqMetadataExtractor extractor : extractors)
+            for (Map.Entry<RfqMetadataFieldNames, Object> entry : extractor.extractMetaData(rfq, session, trades).entrySet())
+                metadata.put(entry.getKey(), entry.getValue());
 
         //TODO: publish the metadata
+        for (Map.Entry<RfqMetadataFieldNames, Object> entry : metadata.entrySet())
+            Log.info(entry.getKey() + " - " + entry.getValue().toString());
     }
 }
