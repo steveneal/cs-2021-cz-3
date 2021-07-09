@@ -6,19 +6,20 @@ import com.cs.rfq.decorator.extractors.TotalTradesWithEntityExtractor;
 import com.cs.rfq.decorator.extractors.VolumeTradedWithEntityYTDExtractor;
 import com.cs.rfq.decorator.publishers.MetadataJsonLogPublisher;
 import com.cs.rfq.decorator.publishers.MetadataPublisher;
+import org.apache.avro.reflect.MapEntry;
+import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.joda.time.DateTime;
+import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.apache.spark.sql.functions.sum;
 
@@ -40,19 +41,30 @@ public class RfqProcessor {
         this.session = session;
         this.streamingContext = streamingContext;
 
-        //TODO: use the TradeDataLoader to load the trade data archives
+        // use the TradeDataLoader to load the trade data archives
+        TradeDataLoader tradeDataLoader = new TradeDataLoader();
+        trades = tradeDataLoader.loadTrades(session, "C:\\exercises\\cs-2021-cz-3\\src\\test\\resources\\trades\\trades.json");
 
-        //TODO: take a close look at how these two extractors are implemented
+        // take a close look at how these two extractors are implemented
         extractors.add(new TotalTradesWithEntityExtractor());
         extractors.add(new VolumeTradedWithEntityYTDExtractor());
     }
 
     public void startSocketListener() throws InterruptedException {
-        //TODO: stream data from the input socket on localhost:9000
+        // Stream data from the input socket on localhost:9000
+        JavaDStream<String> jsonStrings = streamingContext.socketTextStream("localhost", 9000);
 
-        //TODO: convert each incoming line to a Rfq object and call processRfq method with it
+        // convert each incoming string to a Rfq object
+        JavaDStream<Rfq> rfqObjs = jsonStrings.map(x -> Rfq.fromJson(x));
 
-        //TODO: start the streaming context
+        // process each Rfq object
+        rfqObjs.foreachRDD(rdd -> {
+            rdd.collect().forEach(rfq -> processRfq(rfq));
+        });
+
+        // start the streaming context
+        streamingContext.start();
+        streamingContext.awaitTermination();
     }
 
     public void processRfq(Rfq rfq) {
@@ -61,8 +73,13 @@ public class RfqProcessor {
         //create a blank map for the metadata to be collected
         Map<RfqMetadataFieldNames, Object> metadata = new HashMap<>();
 
-        //TODO: get metadata from each of the extractors
+        // get metadata from each of the extractors
+        for (RfqMetadataExtractor extractor : extractors)
+            for (Map.Entry<RfqMetadataFieldNames, Object> entry : extractor.extractMetaData(rfq, session, trades).entrySet())
+                metadata.put(entry.getKey(), entry.getValue());
 
         //TODO: publish the metadata
+        for (Map.Entry<RfqMetadataFieldNames, Object> entry : metadata.entrySet())
+            Log.info(entry.getKey() + " - " + entry.getValue().toString());
     }
 }
