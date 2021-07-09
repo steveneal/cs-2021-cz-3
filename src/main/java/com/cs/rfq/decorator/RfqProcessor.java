@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import static org.apache.spark.sql.functions.sum;
@@ -77,6 +78,10 @@ public class RfqProcessor {
 
         // publish the metadata
         MetadataJsonLogPublisher mjlp = new MetadataJsonLogPublisher();
-        mjlp.publishMetadata(metadata);
+        try {
+            mjlp.publishMetadata(rfq, metadata);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
