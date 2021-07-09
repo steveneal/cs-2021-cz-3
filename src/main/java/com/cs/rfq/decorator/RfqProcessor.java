@@ -1,20 +1,13 @@
 package com.cs.rfq.decorator;
 
-import com.cs.rfq.decorator.extractors.RfqMetadataExtractor;
-import com.cs.rfq.decorator.extractors.RfqMetadataFieldNames;
-import com.cs.rfq.decorator.extractors.TotalTradesWithEntityExtractor;
-import com.cs.rfq.decorator.extractors.VolumeTradedWithEntityYTDExtractor;
+import com.cs.rfq.decorator.extractors.*;
 import com.cs.rfq.decorator.publishers.MetadataJsonLogPublisher;
 import com.cs.rfq.decorator.publishers.MetadataPublisher;
-import org.apache.avro.reflect.MapEntry;
-import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
-import org.joda.time.DateTime;
 import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +36,12 @@ public class RfqProcessor {
 
         // use the TradeDataLoader to load the trade data archives
         TradeDataLoader tradeDataLoader = new TradeDataLoader();
-        trades = tradeDataLoader.loadTrades(session, "C:\\exercises\\cs-2021-cz-3\\src\\test\\resources\\trades\\trades.json");
+        trades = tradeDataLoader.loadTrades(session, "C:\\cs-case-study\\src\\test\\resources\\trades\\trades.json");
 
         // take a close look at how these two extractors are implemented
         extractors.add(new TotalTradesWithEntityExtractor());
         extractors.add(new VolumeTradedWithEntityYTDExtractor());
+        extractors.add(new VolumeTradedByInstrumentOfEntityExtractor());
     }
 
     public void startSocketListener() throws InterruptedException {
