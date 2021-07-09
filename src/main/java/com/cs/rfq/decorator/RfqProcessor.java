@@ -75,8 +75,8 @@ public class RfqProcessor {
             for (Map.Entry<RfqMetadataFieldNames, Object> entry : extractor.extractMetaData(rfq, session, trades).entrySet())
                 metadata.put(entry.getKey(), entry.getValue());
 
-        //TODO: publish the metadata
-        for (Map.Entry<RfqMetadataFieldNames, Object> entry : metadata.entrySet())
-            Log.info(entry.getKey() + " - " + entry.getValue().toString());
+        // publish the metadata
+        MetadataJsonLogPublisher mjlp = new MetadataJsonLogPublisher();
+        mjlp.publishMetadata(metadata);
     }
 }
