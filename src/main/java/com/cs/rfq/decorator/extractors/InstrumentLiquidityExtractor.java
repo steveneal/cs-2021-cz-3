@@ -30,7 +30,6 @@ public class InstrumentLiquidityExtractor implements RfqMetadataExtractor {
 
         Dataset<Row> filtered = trades
                 .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
-                .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
                 .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthMs)))
                 .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
 
