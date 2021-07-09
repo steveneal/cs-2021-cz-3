@@ -12,6 +12,7 @@ import org.mortbay.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.util.*;
 
 import static org.apache.spark.sql.functions.sum;
@@ -36,7 +37,8 @@ public class RfqProcessor {
 
         // use the TradeDataLoader to load the trade data archives
         TradeDataLoader tradeDataLoader = new TradeDataLoader();
-        trades = tradeDataLoader.loadTrades(session, "C:\\cs-case-study\\src\\test\\resources\\trades\\trades.json");
+        //trades = tradeDataLoader.loadTrades(session, "C:\\cs-case-study\\src\\test\\resources\\trades\\trades.json");
+        trades = tradeDataLoader.loadTrades(session, new File("src/test/resources/trades/trades.json").getAbsolutePath());
 
         // take a close look at how these two extractors are implemented
         extractors.add(new TotalTradesWithEntityExtractor());
