@@ -14,5 +14,6 @@ public enum RfqMetadataFieldNames {
     instrumentLiquidity,
     volumeOfInstrumentWithEntityPastMonth,
     volumeOfInstrumentWithEntityPastWeek,
-    volumeOfInstrumentWithEntityPastYear
+    volumeOfInstrumentWithEntityPastYear,
+    averageTradedPricePastWeek
 }
