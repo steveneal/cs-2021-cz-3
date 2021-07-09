@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import static org.apache.spark.sql.functions.sum;
@@ -76,8 +77,12 @@ public class RfqProcessor {
             for (Map.Entry<RfqMetadataFieldNames, Object> entry : extractor.extractMetaData(rfq, session, trades).entrySet())
                 metadata.put(entry.getKey(), entry.getValue());
 
-        //TODO: publish the metadata
-        for (Map.Entry<RfqMetadataFieldNames, Object> entry : metadata.entrySet())
-            Log.info(entry.getKey() + " - " + entry.getValue().toString());
+        // publish the metadata
+        MetadataJsonLogPublisher mjlp = new MetadataJsonLogPublisher();
+        try {
+            mjlp.publishMetadata(rfq, metadata);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
