@@ -4,7 +4,6 @@
     <list default="true" id="6c6bd294-5619-42b2-a186-204ffdf782f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,16 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/resources/com/cs/rfq/decorator/loader-test-trades.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="288" lean-forward="true" selection-start-column="288" selection-end-column="288" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/TradeDataLoaderTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+              <caret column="288" selection-start-column="288" selection-end-column="288" />
             </state>
           </provider>
         </entry>
@@ -49,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="26" />
+            <state relative-caret-position="493">
+              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -71,28 +61,20 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/extractors/TotalTradesWithEntityExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+              <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="86" column="52" lean-forward="true" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
+            <state relative-caret-position="391">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
               <folding>
-                <element signature="e#4259#4260#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#4242#4243#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/trades/trades.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="275" selection-start-column="275" selection-end-column="275" />
             </state>
           </provider>
         </entry>
@@ -100,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/Rfq.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+            <state relative-caret-position="194">
+              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1110#1111#0" expanded="true" />
@@ -141,6 +123,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/test-rfqs.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="147" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -173,9 +164,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/TradeDataLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/RfqProcessor.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/TradeDataLoaderTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java" />
         <option value="$PROJECT_DIR$/src/test/resources/com/cs/rfq/decorator/loader-test-trades.json" />
         <option value="$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java" />
       </list>
     </option>
   </component>
@@ -351,7 +342,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RfqTest.testJSonFactoryMethod">
+  <component name="RunManager" selected="Application.RfqDecoratorMain">
+    <configuration name="ChatterboxServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cs.rfq.utils.ChatterboxServer" />
+      <module name="cs-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cs.rfq.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RfqDecoratorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cs.rfq.decorator.RfqDecoratorMain" />
       <module name="cs-project" />
@@ -361,21 +365,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RfqProcessorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cs-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cs.rfq.decorator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cs.rfq.decorator" />
-      <option name="MAIN_CLASS_NAME" value="com.cs.rfq.decorator.RfqProcessorTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -429,11 +418,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RfqDecoratorMain" />
+        <item itemvalue="Application.ChatterboxServer" />
         <item itemvalue="JUnit.RfqTest.testJSonFactoryMethod" />
         <item itemvalue="JUnit.TradeDataLoaderTest" />
-        <item itemvalue="Application.RfqDecoratorMain" />
         <item itemvalue="JUnit.TradeDataLoaderTest.loadTradeRecords" />
-        <item itemvalue="JUnit.RfqProcessorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -522,20 +511,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1273" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1418919" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1418919" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.41360787" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.45210385" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3992838" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.51566696" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294539" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.45210385" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.51566696" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.3294539" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.3992838" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.23366159" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" />
@@ -593,8 +581,54 @@
     <MESSAGE value="fixed unit tests" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed unit tests" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>line = &quot;1&quot;;
+line.matches(&quot;\\d+&quot;);</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>line = &quot;1&quot;;
+line.matches(&quot;\\cd+&quot;);</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>line.matches(&quot;\\d+&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>line.matches(&quot;\\c\\d+&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>line</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>cache</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>trades.first()</expression-string>
         <language-id>JAVA</language-id>
@@ -719,13 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/test-rfqs.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="147" lean-forward="true" selection-start-column="147" selection-end-column="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/extractors/VolumeTradedWithEntityYTDExtractorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -745,14 +772,83 @@
     <entry file="file://$PROJECT_DIR$/src/test/resources/com/cs/rfq/decorator/loader-test-trades.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="288" lean-forward="true" selection-start-column="288" selection-end-column="288" />
+          <caret column="288" selection-start-column="288" selection-end-column="288" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/TradeDataLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/RfqDecoratorMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="58" lean-forward="true" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/extractors/TotalTradesWithEntityExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/RfqProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="913">
+          <caret line="82" column="14" selection-start-line="82" selection-start-column="14" selection-end-line="82" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqProcessorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/TradeDataLoaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/trades/trades.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="275" selection-start-column="275" selection-end-column="275" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/test-rfqs.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="147" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/Rfq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state relative-caret-position="194">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1110#1111#0" expanded="true" />
@@ -791,75 +887,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/trades/trades.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="275" selection-start-column="275" selection-end-column="275" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/TradeDataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/RfqDecoratorMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="58" lean-forward="true" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/utils/ChatterboxServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="86" column="52" lean-forward="true" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
-          <folding>
-            <element signature="e#4259#4260#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/extractors/TotalTradesWithEntityExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cs/rfq/decorator/RfqProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="913">
-          <caret line="82" column="14" selection-start-line="82" selection-start-column="14" selection-end-line="82" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqProcessorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+        <state relative-caret-position="391">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4242#4243#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/RfqTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/cs/rfq/decorator/TradeDataLoaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
         </state>
       </provider>
     </entry>
