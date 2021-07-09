@@ -10,68 +10,74 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VolumeTradedByInstrumentOfEntityExtractor implements RfqMetadataExtractor  {
-    private String since;
+    public DateTime since;
 
     public VolumeTradedByInstrumentOfEntityExtractor() {
-        //this.since = DateTime.now().getYear() + "-01-01";
-        this.since = "2019-06-01";
+        since = DateTime.now();
     }
+
 
 
     @Override
     public Map<RfqMetadataFieldNames, Object> extractMetaData(Rfq rfq, SparkSession session, Dataset<Row> trades) {
 
-        String queryYTD = String.format("SELECT sum(LastQty) from trade where EntityId='%s' AND SecurityId='%s' AND TradeDate >= '%s'",
-                rfq.getEntityId(),
-                rfq.getIsin(),
-                since);
+        long todayMs = since.withMillisOfDay(0).getMillis();
+        long pastMonthMs = since.withMillis(todayMs).minusMonths(1).getMillis();
+        long pastMonthYs = since.withMillis(todayMs).minusYears(1).getMillis();
+        long pastMonthWs = since.withMillis(todayMs).minusWeeks(1).getMillis();
 
-        trades.createOrReplaceTempView("trade");
-        Dataset<Row> sqlQueryResultsYTD = session.sql(queryYTD);
+        Dataset<Row> filteredYs = trades
+                .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
+                .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
+                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthYs)))
+                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
 
-        Object volumeYTD = sqlQueryResultsYTD.first().get(0);
-        if (volumeYTD == null) {
-            volumeYTD = 0L;
-        }
+        filteredYs.createOrReplaceTempView("trade");
+        Dataset<Row> sqlQueryResultsYs = session.sql("SELECT SUM(LastQty) FROM trade");
 
-        //this.setSince(DateTime.now().getYear() + "-" +DateTime.now().getMonthOfYear() + "-01");
-        this.setSince("2019-05-01");
-        String queryMTD = String.format("SELECT sum(LastQty) from trade where EntityId='%s' AND SecurityId='%s' AND TradeDate >= '%s'",
-                rfq.getEntityId(),
-                rfq.getIsin(),
-                since);
+        Object totVolumeYs = sqlQueryResultsYs.first().get(0);
+        if (totVolumeYs == null)
+            totVolumeYs = 0L;
 
-        trades.createOrReplaceTempView("trade");
-        Dataset<Row> sqlQueryResultsMTD = session.sql(queryMTD);
 
-        Object volumeMTD = sqlQueryResultsMTD.first().get(0);
-        if (volumeMTD == null) {
-            volumeMTD = 0L;
-        }
 
-        //this.setSince(DateTime.now().getYear() + "-" +DateTime.now().getMonthOfYear() + "-" +
-        this.setSince("2019-06-07");
-        String queryWTD = String.format("SELECT sum(LastQty) from trade where EntityId='%s' AND SecurityId='%s' AND TradeDate >= '%s'",
-                rfq.getEntityId(),
-                rfq.getIsin(),
-                since);
+        Dataset<Row> filteredMs = trades
+                .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
+                .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
+                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthMs)))
+                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
 
-        trades.createOrReplaceTempView("trade");
-        Dataset<Row> sqlQueryResultsWTD = session.sql(queryWTD);
+        filteredMs.createOrReplaceTempView("trade");
+        Dataset<Row> sqlQueryResultsMs = session.sql("SELECT SUM(LastQty) FROM trade");
 
-        Object volumeWTD = sqlQueryResultsWTD.first().get(0);
-        if (volumeWTD == null) {
-            volumeWTD = 0L;
-        }
+        Object totVolumeMs = sqlQueryResultsMs.first().get(0);
+        if (totVolumeMs == null)
+            totVolumeMs = 0L;
+
+
+        Dataset<Row> filteredWs = trades
+                .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
+                .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
+                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthWs)))
+                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+
+        filteredWs.createOrReplaceTempView("trade");
+        Dataset<Row> sqlQueryResultsWs = session.sql("SELECT SUM(LastQty) FROM trade");
+
+        Object totVolumeWs = sqlQueryResultsWs.first().get(0);
+        if (totVolumeWs == null)
+            totVolumeWs = 0L;
+
+
 
         Map<RfqMetadataFieldNames, Object> results = new HashMap<>();
-        results.put(RfqMetadataFieldNames.volumeOfInstrumentWithEntityPastWeek, volumeWTD);
-        results.put(RfqMetadataFieldNames.volumeOfInstrumentWithEntityPastMonth, volumeMTD);
-        results.put(RfqMetadataFieldNames.volumeOfInstrumentWithEntityPastYear, volumeYTD);
+        results.put(RfqMetadataFieldNames.volumeOfInstrumentWithEntityPastWeek, totVolumeWs);
+        results.put(RfqMetadataFieldNames.volumeOfInstrumentWithEntityPastMonth, totVolumeMs);
+        results.put(RfqMetadataFieldNames.volumeOfInstrumentWithEntityPastYear, totVolumeYs);
         return results;
     }
 
-    protected void setSince(String since) {
-        this.since = since;
+    protected void setSince(String date) {
+        this.since = DateTime.parse(date);
     }
 }
