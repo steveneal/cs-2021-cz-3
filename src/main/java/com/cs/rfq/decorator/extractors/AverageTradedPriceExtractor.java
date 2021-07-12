@@ -28,8 +28,8 @@ public class AverageTradedPriceExtractor implements RfqMetadataExtractor{
         Dataset<Row> filteredWs = trades
                 .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
                 .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
-                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastWeekMs)))
-                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+                .filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastWeekMs)))
+                .filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
 
         filteredWs.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsWs = session.sql("SELECT AVG(LastPx) FROM trade");

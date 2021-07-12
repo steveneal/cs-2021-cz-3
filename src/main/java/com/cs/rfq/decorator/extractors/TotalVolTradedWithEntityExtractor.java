@@ -35,21 +35,21 @@ public class TotalVolTradedWithEntityExtractor implements RfqMetadataExtractor {
         Dataset<Row> filtered = trades
                 .filter(trades.col("EntityId").equalTo(rfq.getEntityId()));
 
-        Dataset<Row> tradesPastWeek = filtered.filter(trades.col("TradeDate").$greater(new java.sql.Date(pastWeekMs))).filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+        Dataset<Row> tradesPastWeek = filtered.filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastWeekMs))).filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
         tradesPastWeek.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsW = session.sql("SELECT SUM(LastQty) FROM trade");
         Object totVolumePastWeek = sqlQueryResultsW.first().get(0);
         if (totVolumePastWeek == null)
             totVolumePastWeek = 0L;
 
-        Dataset<Row> tradesPastMonth = filtered.filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthMs))).filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+        Dataset<Row> tradesPastMonth = filtered.filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastMonthMs))).filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
         tradesPastMonth.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsM = session.sql("SELECT SUM(LastQty) FROM trade");
         Object totVolumePastMonth = sqlQueryResultsM.first().get(0);
         if (totVolumePastMonth == null)
             totVolumePastMonth = 0L;
 
-        Dataset<Row> tradesPastYear = filtered.filter(trades.col("TradeDate").$greater(new java.sql.Date(pastYearMs))).filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+        Dataset<Row> tradesPastYear = filtered.filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastYearMs))).filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
         tradesPastYear.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsY = session.sql("SELECT SUM(LastQty) FROM trade");
         Object totVolumePastYear = sqlQueryResultsY.first().get(0);

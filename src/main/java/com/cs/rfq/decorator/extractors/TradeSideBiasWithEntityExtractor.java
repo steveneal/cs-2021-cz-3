@@ -48,7 +48,7 @@ public class TradeSideBiasWithEntityExtractor implements RfqMetadataExtractor {
     }
 
     private double computeRatio(Dataset<Row> filtered, SparkSession session, Dataset<Row> trades, long lowerBoundMs, long upperBoundMs) {
-        Dataset<Row> pastTrades = filtered.filter(trades.col("TradeDate").$greater(new java.sql.Date(lowerBoundMs))).filter(trades.col("TradeDate").$less(new java.sql.Date(upperBoundMs)));
+        Dataset<Row> pastTrades = filtered.filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(lowerBoundMs))).filter(trades.col("TradeDate").$less$eq(new java.sql.Date(upperBoundMs)));
         pastTrades.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsBW = session.sql("SELECT SUM(NoSides) FROM trade WHERE Side=1");
         Object numB = sqlQueryResultsBW.first().get(0);

@@ -29,8 +29,8 @@ public class VolumeTradedByInstrumentOfEntityExtractor implements RfqMetadataExt
         Dataset<Row> filteredYs = trades
                 .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
                 .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
-                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthYs)))
-                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+                .filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastMonthYs)))
+                .filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
 
         filteredYs.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsYs = session.sql("SELECT SUM(LastQty) FROM trade");
@@ -44,8 +44,8 @@ public class VolumeTradedByInstrumentOfEntityExtractor implements RfqMetadataExt
         Dataset<Row> filteredMs = trades
                 .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
                 .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
-                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthMs)))
-                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+                .filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastMonthMs)))
+                .filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
 
         filteredMs.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsMs = session.sql("SELECT SUM(LastQty) FROM trade");
@@ -58,8 +58,8 @@ public class VolumeTradedByInstrumentOfEntityExtractor implements RfqMetadataExt
         Dataset<Row> filteredWs = trades
                 .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
                 .filter(trades.col("EntityId").equalTo(rfq.getEntityId()))
-                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthWs)))
-                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+                .filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastMonthWs)))
+                .filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
 
         filteredWs.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResultsWs = session.sql("SELECT SUM(LastQty) FROM trade");
