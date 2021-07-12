@@ -97,7 +97,6 @@ public class RfqProcessor {
                 );
 
         JavaDStream<String> data = stream.map(record -> record.value());
-        //extStream.print();
 
         // Stream data from the input socket on localhost:9000
         //JavaDStream<String> jsonStrings = streamingContext.socketTextStream("localhost", 9000);
