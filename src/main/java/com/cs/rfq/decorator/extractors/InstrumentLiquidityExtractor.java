@@ -30,8 +30,8 @@ public class InstrumentLiquidityExtractor implements RfqMetadataExtractor {
 
         Dataset<Row> filtered = trades
                 .filter(trades.col("SecurityId").equalTo(rfq.getIsin()))
-                .filter(trades.col("TradeDate").$greater(new java.sql.Date(pastMonthMs)))
-                .filter(trades.col("TradeDate").$less(new java.sql.Date(todayMs)));
+                .filter(trades.col("TradeDate").$greater$eq(new java.sql.Date(pastMonthMs)))
+                .filter(trades.col("TradeDate").$less$eq(new java.sql.Date(todayMs)));
 
         filtered.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResults = session.sql("SELECT SUM(LastQty) FROM trade");
