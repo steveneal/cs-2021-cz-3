@@ -3,6 +3,7 @@ package com.cs.rfq.utils;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Simple chat server capable of sending and receiving String lines on separate in/out port numbers.
@@ -17,6 +18,8 @@ public class ChatterboxServer {
 
     //monitors SERVER_PORT_OUT for socket closing
     private static Thread rfqSenderInputThread;
+
+    private static ArrayList<String> cache = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
         runSender();
@@ -80,6 +83,12 @@ public class ChatterboxServer {
                     //naive polling of System.in to check for input and allow thread to be interrupted
                     if (System.in.available() > 0) {
                         String line = in.readLine();
+
+                        if (line.matches("\\d+"))
+                            line = cache.get(cache.size() - Integer.parseInt(line));
+                        else
+                            cache.add(line);
+
                         out.println(line);
                         out.flush();
                         log("sent", line);

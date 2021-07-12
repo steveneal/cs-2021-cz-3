@@ -12,18 +12,22 @@ import java.util.Map;
 public class VolumeTradedWithEntityYTDExtractor implements RfqMetadataExtractor {
 
     private String since;
+    private String today;
 
     public VolumeTradedWithEntityYTDExtractor() {
-        this.since = DateTime.now().getYear() + "-01-01";
+        DateTime now = DateTime.now();
+        this.since = now.getYear() + "-01-01";
+        this.today = now.getYear() + "-" + now.getMonthOfYear() + "-" + now.getDayOfMonth();
     }
 
     @Override
     public Map<RfqMetadataFieldNames, Object> extractMetaData(Rfq rfq, SparkSession session, Dataset<Row> trades) {
 
-        String query = String.format("SELECT sum(LastQty) from trade where EntityId='%s' AND SecurityId='%s' AND TradeDate >= '%s'",
+       String query = String.format("SELECT sum(LastQty) from trade where EntityId='%s' AND SecurityId='%s' AND TradeDate >= '%s' AND TradeDate <= '%s'",
                 rfq.getEntityId(),
                 rfq.getIsin(),
-                since);
+                since,
+                today);
 
         trades.createOrReplaceTempView("trade");
         Dataset<Row> sqlQueryResults = session.sql(query);
@@ -41,4 +45,9 @@ public class VolumeTradedWithEntityYTDExtractor implements RfqMetadataExtractor 
     protected void setSince(String since) {
         this.since = since;
     }
+
+    protected void setToday(String today) {
+        this.since = since;
+    }
+
 }

@@ -11,13 +11,18 @@ public class RfqDecoratorMain {
         System.setProperty("hadoop.home.dir", "C:\\Java\\hadoop-2.9.2");
         System.setProperty("spark.master", "local[4]");
 
-        //TODO: create a Spark configuration and set a sensible app name
+        // Spark configuration
+        SparkConf conf = new SparkConf().setAppName("SparklingTradersApp");
 
-        //TODO: create a Spark streaming context
+        // Spark streaming context
+        JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
 
-        //TODO: create a Spark session
+        // Spark session
+        SparkSession spark = SparkSession.builder().config(conf).getOrCreate();
 
-        //TODO: create a new RfqProcessor and set it listening for incoming RFQs
+        // create a new RfqProcessor and set it listening for incoming RFQs
+        RfqProcessor proc = new RfqProcessor(spark, jssc);
+        proc.startSocketListener();
     }
 
 }
